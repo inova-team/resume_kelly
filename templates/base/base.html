@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>iPortfolio Bootstrap Template - Index</title>
+    <meta content="" name="descriptison">
+    <meta content="" name="keywords">
+
+    <!--     Fonts and icons     -->
+    {% include 'base/stylesheet.html' %}
+    {% block extrastyles %}{% endblock %}
+    {% block extrahead %}{% endblock %}
+</head>
+<body>
+    <!-- ======= Header ======= -->
+    {% include 'base/header.html' %}
+    <!-- End Header -->
+
+    {% block body %}{% endblock %}
+
+    <!-- ======= Footer ======= -->
+    {% include 'base/footer.html' %}
+    <!-- End Footer -->
+
+</body>
+
+{% include 'base/js.html' %}
+{% block extrajs %}{% endblock %}
+</html>

@@ -1,0 +1,76 @@
+{% load static %}
+
+<!-- ======= Header ======= -->
+<header id="header" class="fixed-top">
+    <div class="container-fluid d-flex justify-content-between align-items-center">
+
+        <h1 class="logo me-auto me-lg-0"><a href="index.html">Daniel</a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+        <nav id="navbar" class="navbar order-last order-lg-0">
+            <ul>
+
+                {% if 'home' in request.path %}
+                    <li><a class="active" href="{% url 'home' %}">Home</a></li>
+                {% else %}
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                {% endif %}
+
+                {% if 'about' in request.path %}
+                    <li><a class="active" href="{% url 'about' %}">About</a></li>
+                {% else %}
+                    <li><a href="{% url 'about' %}">About</a></li>
+                {% endif %}
+
+                {% if 'short_bio' in request.path %}
+                    <li><a class="active" href="{% url 'short_bio' %}">Shor Bio</a></li>
+                {% else %}
+                    <li><a href="{% url 'short_bio' %}">Shor Bio</a></li>
+                {% endif %}
+
+                {% if 'resume' in request.path %}
+                    <li><a class="active" href="{% url 'resume' %}">Resume</a></li>
+                {% else %}
+                    <li><a href="{% url 'resume' %}">Resume</a></li>
+                {% endif %}
+
+                {% if 'research' in request.path %}
+                    <li><a class="active" href="{% url 'research' %}">Research</a></li>
+                {% else %}
+                    <li><a href="{% url 'research' %}">Research</a></li>
+                {% endif %}
+
+                {% if 'project' in request.path %}
+                    <li><a class="active" href="{% url 'projects' %}">Projects</a></li>
+                {% else %}
+                    <li><a href="{% url 'projects' %}">Projects</a></li>
+                {% endif %}
+
+                {% if 'article_list' in request.path or 'article_detail' in request.path %}
+                    <li><a class="active" href="{% url 'article_list' %}">Publications</a></li>
+                {% else %}
+                    <li><a href="{% url 'article_list' %}">Publications</a></li>
+                {% endif %}
+
+                {% if 'contact' in request.path %}
+                    <li><a class="active" href="{% url 'contact' %}">Contact</a></li>
+                {% else %}
+                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                {% endif %}
+
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav><!-- .navbar -->
+
+        <div class="header-social-links">
+            <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        </div>
+
+    </div>
+
+</header>
+<!-- End Header -->

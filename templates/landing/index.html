@@ -1,0 +1,32 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block extrastyles %}
+
+    <style>
+        .card-image img {
+            width: 100%;
+            height: auto;
+        }
+
+        @supports (object-fit: cover) {
+            .card-image img {
+                height: 100%;
+                min-height: 16rem;
+                object-fit: cover;
+                object-position: center center;
+            }
+        }
+
+    </style>
+{% endblock %}
+
+{% block body %}
+
+    <main id="main">
+
+    </main>
+    <!-- End #main -->
+{% endblock %}
+{% block extrajs %}
+{% endblock %}

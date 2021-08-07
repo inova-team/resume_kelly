@@ -1,0 +1,155 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block extrastyles %}
+
+    <style>
+        .card-image img {
+            width: 100%;
+            height: auto;
+        }
+
+        @supports (object-fit: cover) {
+            .card-image img {
+                height: 50%;
+                min-height: 13rem;
+                object-fit: cover;
+                object-position: center center;
+            }
+        }
+
+    </style>
+    <!-- CSS Files -->
+    <link href="{% static '/css/now-ui-kit.css' %}" rel="stylesheet"/>
+    <!-- CSS Just for demo purpose, don't include it in your project -->
+    <link href="{% static '/demo/demo.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block extrahead %}
+{% endblock %}
+
+{% block body %}
+
+    <body class="blog-post sidebar-collapse">
+    <div class="wrapper">
+        <div class="page-header page-header-small">
+            <div class="page-header-image" data-parallax="true"
+                 style="background-image: url({{ article.banner.url }});">
+            </div>
+            {#            Sharethis#}
+            {#            <div class="sharethis-inline-share-buttons"></div>#}
+
+            <div class="content-center">
+                <div class="row">
+                    <div class="col-md-8 ml-auto mr-auto text-center">
+                        <h2 class="title">{{ article.name }}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="button-container">
+                            <a href="{% url 'article_list' %}"
+                               class="btn btn-primary btn-round btn-lg">
+                                <i class="now-ui-icons text_align-left"></i> Artículos
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="section">
+                <div class="container">
+                    <div class="row ">
+                        <div class="ml-auto mr-auto">
+                            Abstract
+                            <p>{{ article.description }}</p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pdfobject w-50 p-1 mx-auto" style="background-color: #40556f;">
+                <div class="form-group">
+                    <iframe src="{{ article.pdf.url }}" height="500px" width="100%">
+                    </iframe>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="container">
+                    <div class="col-md-12">
+                        <h2 class="title text-center">Últimos artículos</h2>
+                        <br/>
+                        {% for article in list_articles %}
+                            <div class="blogs-1" id="blogs-1">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="card-image">
+                                            <img class="img img-raised rounded"
+                                                 src="{{ article.banner.url }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <h3 class="card-title">
+                                            <a href={% url "article_detail" pk=article.pk %}>{{ article.name }}</a>
+                                        </h3>
+                                        <p class="card-description">
+                                            {{ article.description|truncatechars:"150" }}
+                                            <a href={% url "article_detail" pk=article.pk %}><b>Leer más</b></a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </body>
+
+{% endblock %}
+
+{% block extrajs %}
+    <script>
+        $(document).ready(function () {
+            $("time.timeago").timeago();
+        });
+    </script>
+    <!--   Core JS Files   -->
+    <script src="{% static '/js/core/jquery.min.js' %}" type="text/javascript"></script>
+    <script src="{% static '/js/core/popper.min.js' %}" type="text/javascript"></script>
+    <script src="{% static '/js/core/bootstrap.min.js' %}" type="text/javascript"></script>
+    <script src="{% static '/js/plugins/bootstrap-switch.js' %}" type="text/javascript"></script>
+    <script src="{% static '/js/plugins/moment.min.js' %}" type="text/javascript"></script>
+    <script src="{% static '/js/plugins/bootstrap-tagsinput.js' %}" type="text/javascript"></script>
+    <script src="{% static '/js/plugins/bootstrap-selectpicker.js' %}" type="text/javascript"></script>
+    <script src="{% static '/js/plugins/bootstrap-datetimepicker.js' %}" type="text/javascript"></script>
+    <script src="{% static '/js/plugins/jquery.timeago.min.js' %}" type="text/javascript"></script>
+    <script src="{% static '/js/plugins/jquery.timeago.es.min.js' %}" type="text/javascript"></script>
+    <script src="{% static '/js/now-ui-kit.js' %}" type="text/javascript"></script>
+    <!--  Google Maps Plugin    -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+    <script>
+        /*$(document).ready(function() {
+          // the body of this function is in assets/js/now-ui-kit.js
+          nowuiKit.initSliders();
+        });*/
+
+        function scrollToDownload() {
+
+            if ($('.section-download').length != 0) {
+                $("html, body").animate({
+                    scrollTop: $('.section-download').offset().top
+                }, 1000);
+            }
+        }
+    </script>
+    <!--  Sweet Alert 2    -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+{% endblock %}

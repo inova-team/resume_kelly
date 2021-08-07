@@ -1,0 +1,34 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block extrastyles %}
+
+    <style>
+        .card-image img {
+            width: 100%;
+            height: auto;
+        }
+
+        @supports (object-fit: cover) {
+            .card-image img {
+                height: 100%;
+                min-height: 16rem;
+                object-fit: cover;
+                object-position: center center;
+            }
+        }
+
+    </style>
+{% endblock %}
+{% block body %}
+    <section id="hero" class="d-flex align-items-center">
+        <div class="container d-flex flex-column align-items-center" data-aos="zoom-in" data-aos-delay="100">
+            <h1>Daniel RACOCEANU</h1>
+            <h2>I'm a Professor of Computer Science and Engineering at Sorbonne University, Paris, France</h2>
+            <h2>I'm a Professor in BioMedical Image Computing</h2>
+            <a href="{% url 'about' %}" class="btn-about">About Me</a>
+        </div>
+    </section><!-- End Hero -->
+{% endblock %}
+{% block extrajs %}
+{% endblock %}
