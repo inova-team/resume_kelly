@@ -4,7 +4,7 @@ from django.urls import path
 from landing import views
 
 urlpatterns = [
-    path('home/', views.renderHome, name="home"),
+    path('', views.renderHome, name="home"),
     path('about/', views.renderAbout, name="about"),
     path('short_bio/', views.renderShortBio, name="short_bio"),
     path('resume/', views.renderResume, name="resume"),
